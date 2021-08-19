@@ -1,0 +1,60 @@
+<div class="container-fluid">
+	<div class="m-4 text-center">
+		<h1>Employee details</h1><i class="fa fa-search" aria-hidden="true"></i>
+	</div>
+	<div class="row mt-4">
+		<div class="col-3">
+			<form style="position: relative;" (submit)="searchByName()">
+				<div class="position-relative has-icon-right">
+					<div class="d-flex align-items-center">
+						<input class="form-control round" autocomplete="off" maxlength="200"
+							placeholder="Search by name" [(ngModel)]="searchedName"
+							[ngModelOptions]="{standalone: true}">
+						<span class="form-control-position search-alignment">
+							<a href="javascript:void(0);" (click)="searchByName()" title="{{'Search'}}">
+								<i class="dropdown-arrow icon action search-icon"></i>
+							</a>
+						</span>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-2">
+			<button type="button" (click)="sortByName()" class="btn btn-primary">Sort by name</button>
+		</div>
+		<div class="col-2">
+			<button type="button" (click)="removeDepartment()" class="btn btn-primary">Remove Development
+				department</button>
+		</div>
+		<div class="col-2">
+			<button type="button" (click)="getDistinctDepartments()" class="btn btn-primary">Distinct departments with
+				count</button>
+		</div>
+		<div class="col-3">
+			<button type="button" (click)="getCandidatesExperienceMoreThanTwoYears()" class="btn btn-primary">candidates with experience more than 2 years
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 mt-4">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th scope="col" (click)="sortByName('id')">Id</th>
+						<th scope="col" (click)="sortByName('name')">Name</th>
+						<th scope="col" (click)="sortByName('department')">Department</th>
+						<th scope="col" (click)="sortByName('joining_date')">Joining date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let Row of clonedRows, trackBy: trackItem">
+						<td>{{ Row.id }}</td>
+						<td>{{ Row.name }}</td>
+						<td>{{ Row.department }}</td>
+						<td>{{ Row.joining_date | date }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

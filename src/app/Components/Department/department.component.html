@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="m-4 text-center">
+		<h1>Department details</h1>
+	</div>
+    <div class="row">
+        <div *ngIf="distinctDepartments.length" class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Department</th>
+                        <th scope="col">Count of candidates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Department of distinctDepartments">
+                        <td>{{ Department.name }}</td>
+                        <td>{{ Department.count }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="!distinctDepartments.length">
+            <span>No results found.</span>
+        </div>
+    </div>
+</div>
